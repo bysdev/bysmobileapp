@@ -9,36 +9,24 @@
     <link rel="stylesheet" href="styles/custom.css">
     <script data-main="scripts/main" src="scripts/libs/require.js"></script>
   </head>
-  <body>
+  <body id="index">
     <div data-role="page" data-theme="a">
       <div data-role="header" data-position="inline">
         <p><a href="index.html">Ask Bainbridge Youth Services</a></p>
       </div>
       <div data-role="content" data-theme="a">
-        <form action="#">
-          <table width="100%">
-            <tr>
-              <td colspan="3" width="100%">
-                <input type="text" placeholder="Ask a question...">
-              </td>
-            </tr>
-            <tr>
-              <td width="33%">&nbsp;</td>
-              <td width="33%">
-                <input type="submit" value="Submit">
-              </td>
-              <td width="33%">&nbsp;</td>
-            </tr>
-          </table>
-        </form>
+        <div class="text-center">
+          <img src="images/logo.jpg" width="120" height="169" />
+        </div>
+
+        <br>
+
+        <ul id="search" data-role="listview" data-inset="true" data-filter="true" data-filter-placeholder="Ask a question..." data-filter-theme="d"></ul>
 
         <hr>
 
-        <ul data-role="listview" data-inset="true">
-          <li><a href="ask_a_professional.html">Ask a professional...</a></li>
-          <li></li>
-          <li><a href="make_an_appointment.html">Make an appointment...</a></li>
-        </ul>
+        <a class="orange-button" href="ask_a_professional.html">Ask a professional...</a>
+        <a class="orange-button" href="make_an_appointment.html">Make an appointment...</a>
       </div>
     </div>
   </body>
