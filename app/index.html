@@ -73,7 +73,7 @@
                                 <!--Twitter-->
                                 <div align="center">
                                     <img src="images/twitter.png" height="30" width="30" onclick="goGetWordPressForm('http://twitter.com/askbysorg','twitter')"> &nbsp; &nbsp;
-                                        <img src="images/facebook.png" height="30" width="30" onclick="goGetWordPressForm('http://facebook.com/askbysorg','fb')">  &nbsp; &nbsp;
+                                        <img src="images/facebook.png" height="30" width="30" onclick="goGetWordPressForm('https://www.facebook.com/600914096651234','fb://profile')">  &nbsp; &nbsp;
                                             <a href="tel:206-707-6388"> <img src="images/phone.png" height="30" width="30"></a> &nbsp; &nbsp;
                                             </div>
 
@@ -110,10 +110,17 @@
     // open win and turn off location and Kirk update 1
     function goGetWordPressForm(WPUrl, scheme) {
       var launchStr;
-      if(scheme != undefined && (
-        (navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/Android/i)))) {
-        launchStr = WPUrl.replace("http",scheme);
-      }
+      if(scheme != undefined && ((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/Android/i)))) {
+          launchStr = WPUrl.replace("http://www.",scheme);
+            if(scheme=='fb://profile'){
+              launchStr='fb://profile/600914096651234';
+          }
+            else if(scheme=='twitter'){
+              launchStr='twitter://user?screen_name=askbysorg';
+          }
+          }
+          }
+      
       else{
         launchStr = WPUrl;
       }
