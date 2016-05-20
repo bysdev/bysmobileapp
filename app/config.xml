@@ -91,8 +91,7 @@
     <gap:plugin name="org.apache.cordova.inappbrowser" />
     <gap:plugin name="cordova-plugin-whitelist" source="npm" />
     <gap:plugin name="cordova-plugin-disable-nsapptransportsecurity" source="npm" />
-    <gap:plugin name="cordova plugin add cordova-universal-links-plugin" source="npm"/>
-    
+
     <!-- Third party plugins -->
     
     <feature name="StatusBar">
