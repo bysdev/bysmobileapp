@@ -15,7 +15,7 @@
     </author>
     
     <icon src="images/icon.png" />
-    <splash src="images/splash.png" />
+    <splash src="images/NewSplash.png" />
     
     <!-- iPhone 6 / 6+ -->
     <icon src="images/icon-60@3x.png" gap:platform="ios" width="180" height="180" />
@@ -55,6 +55,7 @@
     <!-- I guess we need this! -->
     <!-- iPhone 5 / iPod Touch (5th Generation) -->
     <splash src="images/Default-568h@2x.png" platform="ios" width="640" height="1136" />
+    <splash src="images/Default-568h@2x.png" platform="android" width="640" height="1136" />
     
     
     <icon src="ldpi.png" platform="android" qualifier="ldpi" />
