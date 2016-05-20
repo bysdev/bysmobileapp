@@ -2,7 +2,7 @@
 <widget xmlns = "http://www.w3.org/ns/widgets"
     xmlns:gap = "http://phonegap.com/ns/1.0"
     id = "org.bainbridgeyouthservices.askbys"
-    version = "1.0B1">
+    version = "1.0B2">
     
     <name>askBYS</name>
     
@@ -91,6 +91,7 @@
     <gap:plugin name="org.apache.cordova.inappbrowser" />
     <gap:plugin name="cordova-plugin-whitelist" source="npm" />
     <gap:plugin name="cordova-plugin-disable-nsapptransportsecurity" source="npm" />
+    <gap:plugin name="cordova plugin add cordova-universal-links-plugin" source="npm"/>
     
     <!-- Third party plugins -->
     
