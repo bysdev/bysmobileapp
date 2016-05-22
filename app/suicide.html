@@ -44,21 +44,17 @@
 
                     };
 
-                    var mycallback = function ( data ) {
-                        console.log( data );
-                        //var obj = JSON.parse(data);
-                        var jsonStr = JSON.stringify(data);
-                        //document.getElementById("demo").innerHTML = jsonStr;
-
-                        var obj = JSON.parse(jsonStr);
-                        var appendage = document.createElement('appendage');
-
-                        for (i = 0; i < obj.length; i++) {
-                            appendage.innerHTML +=  "<b>Title: </b><br>" + obj[i].title + "<br><br>" +  "<b>Question: </b><br>" + obj[i].post_content + "<br><br>" + "<b>BYS Therapist Response: </b><br>" + obj[i].comment_content + "<hr>";
-                            demo.appendChild(appendage);
-                        }
-
-
+                    var mycallback = function ( data )
+                    {
+                      $.each(data,  function(index, s)
+                      {
+                        $('#demo').append('<div data-role="collapsible" id="'+s.id+'"></div>')
+                        var content = '<h3>'+s.title+'</h3>'+
+                        '<p><strong>Question:</strong><br/>'+s.post_content+
+                        '<p><strong>Response:</strong><br/>'+s.comment_content+'</p></p>';
+                        $('#'+s.id).append(content);
+                      })
+                      $('div[data-role=collapsible]').collapsible();
                     }
 
                      loadJSONP( 'https://www.askbys.com/askbysmobile/MobileWPSearch.php?search=suicide', 'mycallback' ); //use jsonp callback facility to output json from our jsonp test page
