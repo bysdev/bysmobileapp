@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="styles/jquery.mobile.structure-1.4.5.min.css" />
   <script src="scripts/libs/jquery-1.11.1.min.js"></script>
   <script src="scripts/libs/jquery.mobile-1.4.5.min.js"></script>
-  <script src="cordova.js"></script>
+  <!--<script src="cordova.js"></script>-->
 </head>
 <body id="index">
 
@@ -24,6 +24,12 @@
       </div>
 
       <h2>Abuse</h2>
+
+      <!--<div data-role="collapsible">
+        <h3>Heading</h3>
+        <br/><strong>Question:</strong><br/>asdflkj
+        <p><strong>Response:</strong><br/>asdfjkl</p>
+      </div>-->
 
       <p id="demo"></p>
 
@@ -48,21 +54,15 @@
 
       var mycallback = function ( data )
       {
-        console.log( data );
-        var obj = data;
-        var appendage = document.createElement('appendage');
-
-        var d = document.getElementById("demo");
-        var str = "<div data-role='collapsible'>";
-
-        for (i = 0; i < obj.length; i++)
+        $.each(data,  function(index, s)
         {
-          str += "<h4>" + obj[i].title + "</h4>";
-        }
-        str += "</div>";
-        d.innerHTML = str;
-        console.log(d.innerHTML);
-        demo.appendChild(d);
+          $('#demo').append('<div data-role="collapsible" id="'+s.id+'"></div>')
+          var content = '<h3>'+s.title+'</h3>'+
+          '<p><strong>Question:</strong><br/>'+s.post_content+
+          '<p><strong>Response:</strong><br/>'+s.comment_content+'</p></p>';
+          $('#'+s.id).append(content);
+        })
+        $('div[data-role=collapsible]').collapsible();
       }
 
       loadJSONP( 'https://www.askbys.com/askbysmobile/MobileWPSearch.php?search=abuse', 'mycallback' ); //use jsonp callback facility to output json from our jsonp test page-->
