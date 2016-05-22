@@ -73,10 +73,10 @@
                                 <!--Twitter-->
                                 <div align="center">
                                     <img src="images/Twitterbird.png" height="30" width="30" onclick="goGetWordPressForm('http://twitter.com/askbysorg','twitter')"> &nbsp; &nbsp;
-                                        <img src="images/Transparent-Facebook-Logo-Icon.png" height="30" width="30" onclick="goGetWordPressForm('https://www.facebook.com/600914096651234','fb://profile')">  &nbsp; &nbsp;
+                                        <img src="images/Transparent-Facebook-Logo-Icon.png" height="30" width="30" onclick="goGetWordPressForm('https://www.facebook.com/600914096651234','fb')">  &nbsp; &nbsp;
                                             <a href="tel:206-707-6388"> <img src="images/MetroUI_Phone.png" height="30" width="30"></a> &nbsp; &nbsp;
-                                                <img src="images/Google Calendar.png" height="30" width="30" onclick="goGetWordPressForm('<iframe src="https://calendar.google.com/calendar/embed?src=bainbridgeyouthservices.org_m3jggmmcc9r6abmi6smr8ik0bs%40group.calendar.google.com&ctz=America/Los_Angeles" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>','')">  &nbsp; &nbsp;
-                                                
+                                                <img src="images/Google Calendar.png" height="30" width="30" onclick="goGetWordPressForm('https://calendar.google.com/calendar/embed?src=bainbridgeyouthservices.org_m3jggmmcc9r6abmi6smr8ik0bs%40group.calendar.google.com&ctz=America/Los_Angeles')">  &nbsp; &nbsp;
+
                                             </div>
 
                                 </div>
@@ -110,24 +110,24 @@
 
 <script>
     // open win and turn off location and Kirk update 1
+    //info on fallback - http://stackoverflow.com/questions/23095906/how-to-open-twitter-and-facebook-app-with-phonegap
     function goGetWordPressForm(WPUrl, scheme) {
       var launchStr;
       if(scheme != undefined && ((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/Android/i)))) {
-          launchStr = WPUrl.replace("http://www.",scheme);
-            if(scheme=='fb://profile'){
+        if(scheme=='fb'){
               launchStr='fb://profile/600914096651234';
-          }
-            else if(scheme=='twitter'){
-              launchStr='twitter://user?screen_name=askbysorg';
-          }
-          }
-          }
-      
-      else{
+        }
+        else if(scheme=='twitter'){
+          launchStr='twitter://user?screen_name=askbysorg';
+        }
+      }
+      if(!launchStr){
         launchStr = WPUrl;
       }
+        //window.open doesn't throw an error for unknown protocols :(
       window.open(launchStr, '_blank', 'location=yes,toolbar=yes,presentationstyle=formsheet,transitionstyle=crossdissolve');
-    };
+
+    }
 // open win and turn off location
 //function goGetWordPressFormInjectCSS(WPUrl) {
 //    var ref = window.open(WPUrl, '_blank', 'location=yes,toolbar=yes,presentationstyle=formsheet,transitionstyle=crossdissolve');
