@@ -29,7 +29,7 @@
         <p><strong>Response:</strong><br/>asdfjkl</p>
       </div>-->
 
-      <p id="demo"></p>
+      <p data-role="collapsible-set" id="demo"></p>
 
       <script type="text/javascript">
         //Shows a warning when offline
@@ -58,7 +58,7 @@
       {
         $.each(data,  function(index, s)
         {
-          $('#demo').append('<div data-role="collapsible" id="'+s.id+'"></div>')
+          $('#demo').append('<div data-role="collapsible" data-inset="true" id="'+s.id+'"></div>')
           var content = '<h3>'+s.title+'</h3>'+
           '<p><strong>Question:</strong><br/>'+s.post_content+
           '<p><strong>Response:</strong><br/>'+s.comment_content+'</p></p>';
