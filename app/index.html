@@ -114,17 +114,59 @@
     function goGetWordPressForm(WPUrl, scheme) {
       var launchStr;
       if(scheme != undefined && ((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/Android/i)))) {
-        if(scheme=='fb'){
-              launchStr='fb://profile/600914096651234';
+        if(navigator.userAgent.match(/iPhone/i)){
+           if(scheme == twitter){
+             appAvailability.check(
+              'twitter://', // URI Scheme
+              function() {  // Success callback
+                launchStr='twitter://user?screen_name=askbysorg';
+              },
+              function() {  // Error callback
+                launchStr = WPUrl;
+              }
+            );
+           }
+           
+            else if(scheme == fb){
+             appAvailability.check(
+              'fb://', // URI Scheme
+              function() {  // Success callback
+               launchStr='fb://profile/600914096651234';
+              },
+              function() {  // Error callback
+                launchStr = WPUrl;
+              }
+             );
+           }
         }
-        else if(scheme=='twitter'){
-          launchStr='twitter://user?screen_name=askbysorg';
+         if(navigator.userAgent.match(/Android/i)){
+           if(scheme == twitter){
+             appAvailability.check(
+               'com.twitter.android', function() { // Success callback
+                launchStr ='twitter://user?screen_name=askbysorg';
+                },
+             function() {           // Error callback
+                launchStr = WPUrl;
+               }
+            );
+           }
+           
+            else if(scheme == fb){
+            appAvailability.check
+            ('com.facebook.katana', // Package Name
+            function() {           // Success callback
+               launchStr = 'fb://profile/600914096651234';
+                   },
+              function() {           // Error callback
+                launchStr = WPUrl;
+                 }
+              );
+           }
         }
+        
       }
-      if(!launchStr){
-        launchStr = WPUrl;
-      }
-        //window.open doesn't throw an error for unknown protocols :(
+      
+              //window.open doesn't throw an error for unknown protocols :(
       window.open(launchStr, '_blank', 'location=yes,toolbar=yes,presentationstyle=formsheet,transitionstyle=crossdissolve');
 
     }
