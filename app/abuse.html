@@ -14,8 +14,6 @@
   <!--<script src="cordova.js"></script>-->
 </head>
 <body id="index">
-
-
   <div data-role="page" data-theme="a" >
     <div data-role="content" data-theme="a">
       <a href="index.html" data-ajax="false" data-role="button" data-icon="arrow-l" data-iconpos="notext"></a>
@@ -34,6 +32,10 @@
       <p id="demo"></p>
 
       <script type="text/javascript">
+        //Shows a warning when offline
+      $(document).on("pagecontainerloadfailed",function(event,data){
+          alert("Sorry, requested page does not exist.");
+      });
 
       var loadJSONP = function ( url, callback ) {
 

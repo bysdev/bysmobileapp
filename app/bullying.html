@@ -24,9 +24,31 @@
                     </div>
 
                     <h2>Bullying</h2>
+                    <p id="img"></p>
                     <p id="demo"></p>
 
                     <script type="text/javascript">
+                    //To show images
+                    function show_image(src, width, height, alt) {
+                      var img = document.createElement("img");
+                      img.src = src;
+                      img.width = width;
+                      img.height = height;
+                      img.alt = alt;
+
+                      // This next line will just add it to the <body> tag
+                      document.body.appendChild(img);
+                    }
+
+                    //Checks if offline
+                    var isOffline = 'onLine' in navigator && !navigator.onLine;
+                    if ( isOffline ) {
+                      //Shows warning image
+                      show_image ('Offline-64.png', 100, 100,'Offline Image');
+                    }
+                    /*else {
+                       internet data
+                    }*/
 
                     var loadJSONP = function ( url, callback ) {
 
