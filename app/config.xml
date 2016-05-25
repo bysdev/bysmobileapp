@@ -15,7 +15,7 @@
     </author>
     
     <icon src="images/icon.png" />
-    <splash src="images/NewSplash.png" />
+    <splash src="images/Default-568@2x.png" />
     
     <!-- iPhone 6 / 6+ -->
     <icon src="images/icon-60@3x.png" gap:platform="ios" width="180" height="180" />
