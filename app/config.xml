@@ -55,7 +55,7 @@
     <!-- I guess we need this! -->
     <!-- iPhone 5 / iPod Touch (5th Generation) -->
     <splash src="images/Default-568h@2x.png" platform="ios" width="640" height="1136" />
-    <splash src="images/Default-568h@2x.png" platform="android" width="640" height="1136" />
+    <splash src="images/Default-568h@2x.png" platform="android" density="ldpi.png" />
     
     
     <icon src="ldpi.png" platform="android" qualifier="ldpi" />
