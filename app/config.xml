@@ -60,6 +60,7 @@
     
     <!-- Android splash -->
     <splash src="images/Default-568h@2x.png" platform="android" qualifier="ldpi" />
+     <splash src="images/Default-568h@2x.png" platform="android" qualifier="mdpi" />
 
     
     
