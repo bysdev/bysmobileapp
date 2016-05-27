@@ -144,9 +144,9 @@
         }
          if(navigator.userAgent.match(/Android/i)){
            if(scheme === 'twitter'){
-             document.write('android twitter function');
              appAvailability.check(
                'com.twitter.android', function() { // Success callback
+                             document.write('android twitter function');
                 launchStr ='twitter://user?screen_name=askbysorg';
                 },
              function() {           // Error callback
