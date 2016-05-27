@@ -112,9 +112,12 @@
     //info on fallback - http://stackoverflow.com/questions/23095906/how-to-open-twitter-and-facebook-app-with-phonegap
     function goGetWordPressForm(WPUrl, scheme) {
       var launchStr = WPUrl;
+      document.write('Step 1');
       if(scheme != 'none' && ((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/Android/i)))) {
+        document.write('Step 2');
         if(navigator.userAgent.match(/iPhone/i)){
            if(scheme === 'twitter'){
+             document.write('ios twitter function');
              appAvailability.check(
               'twitter://', // URI Scheme
               function() {  // Success callback
@@ -127,6 +130,7 @@
            }
 
             else if(scheme === 'fb'){
+             document.write('ios facebook function');
              appAvailability.check(
               'fb://', // URI Scheme
               function() {  // Success callback
@@ -140,6 +144,7 @@
         }
          if(navigator.userAgent.match(/Android/i)){
            if(scheme === 'twitter'){
+             document.write('android twitter function');
              appAvailability.check(
                'com.twitter.android', function() { // Success callback
                 launchStr ='twitter://user?screen_name=askbysorg';
@@ -151,6 +156,7 @@
            }
 
             else if(scheme === 'fb'){
+              document.write('android facebok');
             appAvailability.check
             ('com.facebook.katana', // Package Name
             function() {           // Success callback
