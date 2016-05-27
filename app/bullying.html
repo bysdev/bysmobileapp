@@ -39,7 +39,7 @@
       {
         $('#'+target).prepend('<img src="'+src+'" width="'+width+'" height="'+height+'" alt="'+alt+'" />');
       }
-      add_image('img', 'Offline-64.png', 100, 100, 'mdpi.png');
+
 
       // Offline check
       function checkInternet()
@@ -55,7 +55,11 @@
           return true;
         }
       }
-      console.log(checkInternet());
+
+      if (checkInternet() === false)
+      {
+        add_image('img', 'Offline-64.png', 100, 100, 'mdpi.png');
+      }
 
 
       /*//Checks if offline
