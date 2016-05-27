@@ -60,7 +60,11 @@
     
     <!-- Android splash -->
     <splash src="images/Default-568h@2x.png" platform="android" qualifier="ldpi" />
-     <splash src="images/Default-568h@2x.png" platform="android" qualifier="mdpi" />
+    <splash src="images/Default-568h@2x.png" platform="android" qualifier="mdpi" />
+    <splash src="images/Default-568h@2x.png" platform="android" qualifier="hdpi" />
+    <splash src="images/Default-568h@2x.png" platform="android" qualifier="xhdpi" />
+    <splash src="images/Default-568h@2x.png" platform="android" qualifier="xxhdpi" />
+    <splash src="images/Default-568h@2x.png" platform="android" qualifier="xxxhdpi" />
 
     
     
