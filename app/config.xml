@@ -67,7 +67,7 @@
     <splash src="images/Default-568h@2x.png" platform="android" qualifier="xxxhdpi" />
 
     
-    
+    <!-- Android icon -->
     <icon src="ldpi.png" platform="android" qualifier="ldpi" />
     <icon src="mdpi.png" platform="android" qualifier="mdpi" />
     <icon src="hdpi.png" platform="android" qualifier="hdpi" />
@@ -122,6 +122,10 @@
     <gap:config-file platform="ios" parent="ITSAppUsesNonExemptEncryption" mode="add">
         <false/>
     </gap:config-file>
+    
+    <!-- BHS 2016 team 3 plugin -->
+    <gap:plugin name="com.ohh2ahh.plugins.appavailability" version="0.3.1" />
+
     
     
     <!-- what are these? -->
