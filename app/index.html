@@ -10,7 +10,7 @@
             <link rel="stylesheet" href="styles/jquery.mobile.structure-1.4.5.min.css" />
             <script src="scripts/libs/jquery-1.11.1.min.js"></script>
             <script src="scripts/libs/jquery.mobile-1.4.5.min.js"></script>
-            <!-- <script src="cordova.js"></script> _________________________ Cordova does not exist-->
+            <script src="cordova.js"></script>
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
                 </head>
     <body id="index">
@@ -109,83 +109,77 @@
 
 <script>
     // open win and turn off location and Kirk update 1
-    //info on fallback - http://stackoverflow.com/questions/23095906/how-to-open-twitter-and-facebook-app-with-phonegap
-    function goGetWordPressForm(WPUrl, scheme) {
-      var launchStr = WPUrl;
-      document.write('Step 1');
-      if(scheme != 'none' && ((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/Android/i)))) {
-        document.write('Step 2');
-        if(navigator.userAgent.match(/iPhone/i)){
-           if(scheme === 'twitter'){
-             document.write('ios twitter function');
-             appAvailability.check(
-              'twitter://', // URI Scheme
-              function() {  // Success callback
-                launchStr='twitter://user?screen_name=askbysorg';
-              },
-              function() {  // Error callback
-                launchStr = WPUrl;
-              }
-            );
-           }
+        //info on fallback - http://stackoverflow.com/questions/23095906/how-to-open-twitter-and-facebook-app-with-phonegap
+        document.myAppUrls = {};
+        if(scheme != "none")
+        {
+            var appCheck = {};
+            var appPresentUrl = {};
+            var appAbsentUrl = {};
 
-            else if(scheme === 'fb'){
-             document.write('ios facebook function');
-             appAvailability.check(
-              'fb://', // URI Scheme
-              function() {  // Success callback
-               launchStr='fb://profile/600914096651234';
-              },
-              function() {  // Error callback
-                launchStr = WPUrl;
-              }
-             );
-           }
-        }
-         if(navigator.userAgent.match(/Android/i)){
-           if(scheme === 'twitter'){
-             appAvailability.check(
-               'com.twitter.android', function() { // Success callback
-                             document.write('android twitter function');
-                launchStr ='twitter://user?screen_name=askbysorg';
-                },
-             function() {           // Error callback
-                launchStr = WPUrl;
-               }
-            );
-           }
-
-            else if(scheme === 'fb'){
-              document.write('android facebok');
-            appAvailability.check
-            ('com.facebook.katana', // Package Name
-            function() {           // Success callback
-               launchStr = 'fb://profile/600914096651234';
-                   },
-              function() {           // Error callback
-                launchStr = WPUrl;
-                 }
-              );
-           }
+            if(navigator.userAgent.match(/iPhone/i))
+            {
+                appCheck.twitter = "twitter://";
+                appPresentUrl.twitter = "twitter://user?screen_name=askbysorg";
+                appAbsentUrl.twitter = "http://mobile.twitter.com/askbysorg";
+                appCheck.fb = "fb://";
+                appPresentUrl.fb = "fb://profile/600914096651234";
+                appAbsentUrl.fb = "https://www.facebook.com/600914096651234";
+            }
+            else
+            if(navigator.userAgent.match(/Android/i)))
+            {
+                appCheck.twitter = "com.twitter.android";
+                appPresentUrl.twitter = "twitter://user?screen_name=askbysorg";
+                appAbsentUrl.twitter = "http://mobile.twitter.com/askbysorg";
+                appCheck.fb = "fb://";
+                //Still not sure what the corrrect fb link to app is... May need to use intents
+                appPresentUrl.fb = "fb://profile/600914096651234";
+                appAbsentUrl.fb = "https://www.facebook.com/600914096651234";
+            }
+            if(appCheck.twitter)
+            {
+                appAvailability.check(appCheck.twitter,
+                  function() {  // Success callback
+                     document.myAppUrls.twitter = appPresentUrl.twitter;
+                  },
+                  function() {  // Error callback
+                     document.myAppUrls.twitter = appAbsentUrl.twitter;
+                  }
+                );
+            }
+            if(appCheck.fb)
+            {
+                appAvailability.check(appCheck.fb,
+                  function() {  // Success callback
+                     document.myAppUrls.fb = appPresentUrl.fb;
+                  },
+                  function() {  // Error callback
+                     document.myAppUrls.fb = appAbsentUrl.fb;
+                  }
+                );
+            }
         }
 
-      }
-
-              //window.open doesn't throw an error for unknown protocols :(
-    var ref = window.open(launchStr, '_blank', 'location=yes,toolbar=yes,presentationstyle=formsheet,transitionstyle=crossdissolve');
-    }
-// open win and turn off location
-//function goGetWordPressFormInjectCSS(WPUrl) {
-//    var ref = window.open(WPUrl, '_blank', 'location=yes,toolbar=yes,presentationstyle=formsheet,transitionstyle=crossdissolve');
-//    ref.addEventListener('loadstop', function() {
-//    ref.insertCSS({file: "styles/wp-contact7.css"});
-//                         });
-//};
-// attach listener to loadstart
-//ref.addEventListener('loadstart', function(event) {
-//var urlSuccessPage = "http://myloginapp/success/";
-//if (event.url == urlSuccessPage) {
-//ref.close();
-//}
-//});
+        function goGetWordPressForm(WPUrl, scheme) {
+            var launchStr = document.myAppUrls[scheme];
+            if (!launchStr)
+                launchStr = WPUrl;
+            window.open(launchStr, '_blank',
+                'location=yes,toolbar=yes,presentationstyle=formsheet,transitionstyle=crossdissolve');
+        }
+    // open win and turn off location
+    //function goGetWordPressFormInjectCSS(WPUrl) {
+    //    var ref = window.open(WPUrl, '_blank', 'location=yes,toolbar=yes,presentationstyle=formsheet,transitionstyle=crossdissolve');
+    //    ref.addEventListener('loadstop', function() {
+    //    ref.insertCSS({file: "styles/wp-contact7.css"});
+    //                         });
+    //};
+    // attach listener to loadstart
+    //ref.addEventListener('loadstart', function(event) {
+    //var urlSuccessPage = "http://myloginapp/success/";
+    //if (event.url == urlSuccessPage) {
+    //ref.close();
+    //}
+    //});
     </script>
