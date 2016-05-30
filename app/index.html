@@ -60,7 +60,7 @@
                     <img src="images/Twitterbird.png" height="30" width="30" onclick="goGetWordPressForm('http://twitter.com/askbysorg','twitter')"> &nbsp; &nbsp;
                     <img src="images/Transparent-Facebook-Logo-Icon.png" height="30" width="30" onclick="goGetWordPressForm('https://www.facebook.com/600914096651234','fb')">  &nbsp; &nbsp;
                     <a href="tel:206-707-6388"> <img src="images/MetroUI_Phone.png" height="30" width="30"></a> &nbsp; &nbsp;
-                    <img src="images/Google Calendar.png" height="30" width="30" onclick="goGetWordPressForm('https://calendar.google.com/calendar/embed?src=bainbridgeyouthservices.org_m3jggmmcc9r6abmi6smr8ik0bs%40group.calendar.google.com&ctz=America/Los_Angeles','none')">
+                    <img src="images/Google Calendar.png" height="30" width="30" onclick="goGetWordPressForm('https://calendar.google.com/calendar/embed?src=bainbridgeyouthservices.org_m3jggmmcc9r6abmi6smr8ik0bs%40group.calendar.google.com&ctz=America/Los_Angeles&mode=AGENDA','none')">
                         &nbsp; &nbsp;
                                                 
                 </div>
@@ -104,32 +104,32 @@
     //info on fallback - http://stackoverflow.com/questions/23095906/how-to-open-twitter-and-facebook-app-with-phonegap
     function goGetWordPressForm(WPUrl, scheme) {
         var launchStr = WPUrl;
-        document.write('Step 1');
         if(scheme != 'none' && ((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/Android/i)))) {
-            document.write('Step 2');
             if(navigator.userAgent.match(/iPhone/i)){
                 if(scheme === 'twitter'){
-                    document.write('ios twitter function');
                     appAvailability.check(
                                           'twitter://', // URI Scheme
                                           function() {  // Success callback
                                           launchStr='twitter://user?screen_name=askbysorg';
+                                          var ref = window.open(launchStr, '_system');
                                           },
                                           function() {  // Error callback
                                           launchStr = WPUrl;
+                                          var ref = window.open(launchStr, '_blank', 'location=yes,toolbar=yes,presentationstyle=formsheet,transitionstyle=crossdissolve');
                                           }
                                           );
                 }
                 
                 else if(scheme === 'fb'){
-                    document.write('ios facebook function');
                     appAvailability.check(
                                           'fb://', // URI Scheme
                                           function() {  // Success callback
                                           launchStr='fb://profile/600914096651234';
+                                          var ref = window.open(launchStr, '_system');
                                           },
                                           function() {  // Error callback
                                           launchStr = WPUrl;
+                                          var ref = window.open(launchStr, '_blank', 'location=yes,toolbar=yes,presentationstyle=formsheet,transitionstyle=crossdissolve');
                                           }
                                           );
                 }
@@ -140,9 +140,11 @@
                                           'com.twitter.android', function() { // Success callback
                                           document.write('android twitter function');
                                           launchStr ='twitter://user?screen_name=askbysorg';
+                                          var ref = window.open(launchStr, '_system');
                                           },
                                           function() {           // Error callback
                                           launchStr = WPUrl;
+                                          var ref = window.open(launchStr, '_blank', 'location=yes,toolbar=yes,presentationstyle=formsheet,transitionstyle=crossdissolve');
                                           }
                                           );
                 }
@@ -153,9 +155,11 @@
                     ('com.facebook.katana', // Package Name
                      function() {           // Success callback
                      launchStr = 'fb://profile/600914096651234';
+                     var ref = window.open(launchStr, '_system');
                      },
                      function() {           // Error callback
                      launchStr = WPUrl;
+                     var ref = window.open(launchStr, '_blank', 'location=yes,toolbar=yes,presentationstyle=formsheet,transitionstyle=crossdissolve');
                      }
                      );
                 }
