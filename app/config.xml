@@ -59,10 +59,10 @@
     <splash src="images/Default-568h@2x.png" platform="ios" width="640" height="1136" />
     
     <!-- Android splash -->
-    <splash src="Splash ldpi" platform="android" qualifier="ldpi" />
-    <splash src="Splash mdpi" platform="android" qualifier="mdpi" />
-    <splash src="Splash hdpi" platform="android" qualifier="hdpi" />
-    <splash src="Splash xhdpi" platform="android" qualifier="xhdpi" />
+    <splash src="Splash ldpi.png" platform="android" qualifier="ldpi" />
+    <splash src="Splash mdpi.png" platform="android" qualifier="mdpi" />
+    <splash src="Splash hdpi.png" platform="android" qualifier="hdpi" />
+    <splash src="Splash xhdpi.png" platform="android" qualifier="xhdpi" />
 
     
     
