@@ -111,8 +111,7 @@
     // open win and turn off location and Kirk update 1
         //info on fallback - http://stackoverflow.com/questions/23095906/how-to-open-twitter-and-facebook-app-with-phonegap
         document.myAppUrls = {};
-        if(scheme != "none")
-        {
+
             var appCheck = {};
             var appPresentUrl = {};
             var appAbsentUrl = {};
@@ -126,8 +125,7 @@
                 appPresentUrl.fb = "fb://profile/600914096651234";
                 appAbsentUrl.fb = "https://www.facebook.com/600914096651234";
             }
-            else
-            if(navigator.userAgent.match(/Android/i)))
+            else if(navigator.userAgent.match(/Android/i)))
             {
                 appCheck.twitter = "com.twitter.android";
                 appPresentUrl.twitter = "twitter://user?screen_name=askbysorg";
@@ -137,7 +135,7 @@
                 appPresentUrl.fb = "fb://profile/600914096651234";
                 appAbsentUrl.fb = "https://www.facebook.com/600914096651234";
             }
-            if(appCheck.twitter)
+            if(appCheck.twitter) //defensive
             {
                 appAvailability.check(appCheck.twitter,
                   function() {  // Success callback
@@ -148,7 +146,7 @@
                   }
                 );
             }
-            if(appCheck.fb)
+            if(appCheck.fb) //defensive
             {
                 appAvailability.check(appCheck.fb,
                   function() {  // Success callback
@@ -159,10 +157,11 @@
                   }
                 );
             }
-        }
+
 
         function goGetWordPressForm(WPUrl, scheme) {
-            var launchStr = document.myAppUrls[scheme];
+            var launchStr
+            launchStr = document.myAppUrls[scheme];
             if (!launchStr)
                 launchStr = WPUrl;
             window.open(launchStr, '_blank',
