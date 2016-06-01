@@ -107,11 +107,14 @@ function goGetWordPressFormInjectCSS(WPUrl) {
 
 
 // attach listener to loadstart
-//ref.addEventListener('loadstart', function(event) {
-//var urlSuccessPage = "http://myloginapp/success/";
-//if (event.url == urlSuccessPage) {
-//ref.close();
-//}
-//});
+ref.addEventListener('loadstart', function(event) {
+  var urlSuccessPage = "http://myloginapp/success/";
+  if (event.url == urlSuccessPage) {
+    ref.close();
+  }
+  else {
+    $('#test').html('<img src="Offline-64.png" height="100px" width"100px">');
+  }
+});
 
 </script>
