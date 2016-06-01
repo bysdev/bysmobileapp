@@ -104,81 +104,83 @@
 
                     </div>
 
+            <script>
+                // open win and turn off location and Kirk update 1
+                    //info on fallback - http://stackoverflow.com/questions/23095906/how-to-open-twitter-and-facebook-app-with-phonegap
+                    document.myAppUrls = {};
+            
+                        var appCheck = {};
+                        var appPresentUrl = {};
+                        var appAbsentUrl = {};
+            
+                        if(navigator.userAgent.match(/iPhone/i))
+                        {
+                            appCheck.twitter = "twitter://";
+                            appPresentUrl.twitter = "twitter://user?screen_name=askbysorg";
+                            appAbsentUrl.twitter = "http://mobile.twitter.com/askbysorg";
+                            appCheck.fb = "fb://";
+                            appPresentUrl.fb = "fb://profile/600914096651234";
+                            appAbsentUrl.fb = "https://www.facebook.com/600914096651234";
+                        }
+                        else if(navigator.userAgent.match(/Android/i))
+                        {
+                            appCheck.twitter = "com.twitter.android";
+                            appPresentUrl.twitter = "twitter://user?screen_name=askbysorg";
+                            appAbsentUrl.twitter = "http://mobile.twitter.com/askbysorg";
+                            appCheck.fb = "fb://";
+                            //Still not sure what the corrrect fb link to app is... May need to use intents
+                            appPresentUrl.fb = "fb://profile/600914096651234";
+                            appAbsentUrl.fb = "https://www.facebook.com/600914096651234";
+                        }
+                        if(appCheck.twitter) //defensive
+                        {
+                            appAvailability.check(appCheck.twitter,
+                              function() {  // Success callback
+                                 document.myAppUrls.twitter = appPresentUrl.twitter;
+                              },
+                              function() {  // Error callback
+                                 document.myAppUrls.twitter = appAbsentUrl.twitter;
+                              }
+                            );
+                        }
+                        if(appCheck.fb) //defensive
+                        {
+                            appAvailability.check(appCheck.fb,
+                              function() {  // Success callback
+                                 document.myAppUrls.fb = appPresentUrl.fb;
+                              },
+                              function() {  // Error callback
+                                 document.myAppUrls.fb = appAbsentUrl.fb;
+                              }
+                            );
+                        }
+            
+            
+                    function goGetWordPressForm(WPUrl, scheme) {
+                        var launchStr
+                        launchStr = document.myAppUrls[scheme];
+                        if (!launchStr)
+                            launchStr = WPUrl;
+                        window.open(launchStr, '_blank',
+                            'location=yes,toolbar=yes,presentationstyle=formsheet,transitionstyle=crossdissolve');
+                    }
+                // open win and turn off location
+                //function goGetWordPressFormInjectCSS(WPUrl) {
+                //    var ref = window.open(WPUrl, '_blank', 'location=yes,toolbar=yes,presentationstyle=formsheet,transitionstyle=crossdissolve');
+                //    ref.addEventListener('loadstop', function() {
+                //    ref.insertCSS({file: "styles/wp-contact7.css"});
+                //                         });
+                //};
+                // attach listener to loadstart
+                //ref.addEventListener('loadstart', function(event) {
+                //var urlSuccessPage = "http://myloginapp/success/";
+                //if (event.url == urlSuccessPage) {
+                //ref.close();
+                //}
+                //});
+                </script>
+
             </body>
-</html>
-
-<script>
-    // open win and turn off location and Kirk update 1
-        //info on fallback - http://stackoverflow.com/questions/23095906/how-to-open-twitter-and-facebook-app-with-phonegap
-        document.myAppUrls = {};
-
-            var appCheck = {};
-            var appPresentUrl = {};
-            var appAbsentUrl = {};
-
-            if(navigator.userAgent.match(/iPhone/i))
-            {
-                appCheck.twitter = "twitter://";
-                appPresentUrl.twitter = "twitter://user?screen_name=askbysorg";
-                appAbsentUrl.twitter = "http://mobile.twitter.com/askbysorg";
-                appCheck.fb = "fb://";
-                appPresentUrl.fb = "fb://profile/600914096651234";
-                appAbsentUrl.fb = "https://www.facebook.com/600914096651234";
-            }
-            else if(navigator.userAgent.match(/Android/i))
-            {
-                appCheck.twitter = "com.twitter.android";
-                appPresentUrl.twitter = "twitter://user?screen_name=askbysorg";
-                appAbsentUrl.twitter = "http://mobile.twitter.com/askbysorg";
-                appCheck.fb = "fb://";
-                //Still not sure what the corrrect fb link to app is... May need to use intents
-                appPresentUrl.fb = "fb://profile/600914096651234";
-                appAbsentUrl.fb = "https://www.facebook.com/600914096651234";
-            }
-            if(appCheck.twitter) //defensive
-            {
-                appAvailability.check(appCheck.twitter,
-                  function() {  // Success callback
-                     document.myAppUrls.twitter = appPresentUrl.twitter;
-                  },
-                  function() {  // Error callback
-                     document.myAppUrls.twitter = appAbsentUrl.twitter;
-                  }
-                );
-            }
-            if(appCheck.fb && false) //defensive
-            {
-                appAvailability.check(appCheck.fb,
-                  function() {  // Success callback
-                     document.myAppUrls.fb = appPresentUrl.fb;
-                  },
-                  function() {  // Error callback
-                     document.myAppUrls.fb = appAbsentUrl.fb;
-                  }
-                );
-            }
+    </html>
 
 
-        function goGetWordPressForm(WPUrl, scheme) {
-            var launchStr
-            launchStr = document.myAppUrls[scheme];
-            if (!launchStr)
-                launchStr = WPUrl;
-            window.open(launchStr, '_blank',
-                'location=yes,toolbar=yes,presentationstyle=formsheet,transitionstyle=crossdissolve');
-        }
-    // open win and turn off location
-    //function goGetWordPressFormInjectCSS(WPUrl) {
-    //    var ref = window.open(WPUrl, '_blank', 'location=yes,toolbar=yes,presentationstyle=formsheet,transitionstyle=crossdissolve');
-    //    ref.addEventListener('loadstop', function() {
-    //    ref.insertCSS({file: "styles/wp-contact7.css"});
-    //                         });
-    //};
-    // attach listener to loadstart
-    //ref.addEventListener('loadstart', function(event) {
-    //var urlSuccessPage = "http://myloginapp/success/";
-    //if (event.url == urlSuccessPage) {
-    //ref.close();
-    //}
-    //});
-    </script>
