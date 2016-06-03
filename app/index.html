@@ -134,19 +134,22 @@
                     }
 
               function checkAppSupport(appList,availURL,unavailURL,appDetect){
-                var k = applist.pop;
+                var k = appList.pop;
                 var goURL = availURL[k];
                 var stopURL = unavailURL[k];
                 var checkScheme = appDetect[k];
                 appAvailability.check(checkScheme,
                     function() {  // Success callback
                        document.myAppUrls[k] = goURL;
+                       console.log("Success Callback");
                        if(appList.length>0){
                          checkAppSupport(appList,availURL,unavailURL,appDetect);
                        }
                     },
                     function() {  // Error callback
                        document.myAppUrls[k] = stopURL;
+                       console.log("Failure Callback");
+
                        if(appList.length>0){
                           checkAppSupport(appList,availURL,unavailURL,appDetect);
                        }
@@ -154,7 +157,7 @@
                   );      
                 }
                             //Starts the recursion for setting the global variable
-              checkAppSupport(["twitter","fb"],appPresent,appAbsent,appCheck);
+              checkAppSupport(["twitter","fb"],appPresentUrl,appAbsentUrl,appCheck);
               
               function goGetWordPressForm(WPUrl, scheme) {
                     var launchStr
