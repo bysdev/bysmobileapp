@@ -141,12 +141,15 @@
                 appAvailability.check(checkScheme,
                     function() {  // Success callback
                        document.myAppUrls[k] = goURL;
+                       console.log("Success Callback");
                        if(appList.length>0){
                          checkAppSupport(appList,availURL,unavailURL,appDetect);
                        }
                     },
                     function() {  // Error callback
                        document.myAppUrls[k] = stopURL;
+                       console.log("Failure Callback");
+
                        if(appList.length>0){
                           checkAppSupport(appList,availURL,unavailURL,appDetect);
                        }
