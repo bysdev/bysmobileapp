@@ -172,7 +172,8 @@
                           window.open(WPUrl, '_blank',
                           'location=yes,toolbar=yes,presentationstyle=formsheet,transitionstyle=crossdissolve');
                     } else {
-                        window.open(launchStr);
+                        console.log("window.open " + launchStr);
+                        window.open(launchStr,'_system');
                     }
               }
                 // open win and turn off location
