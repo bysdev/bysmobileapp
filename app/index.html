@@ -79,8 +79,6 @@
                                             </div>
 
                                 </div>
-                                <a href="fb://page/600914096651234">Test Link to FB</a>
-
                       <!--Panel-->
                     <div data-role="panel" id="myPanel">
                         <div align=“center”>
@@ -117,15 +115,14 @@
                 appAvailability.check(checkScheme,
                     function() {  // Success callback
                        document.myAppUrls[k] = goURL;
-                       console.log("Success Callback " + k);
+                       // console.log("Success Callback " + k);
                        if(appList.length>0){
                          checkAppSupport(appList,availURL,unavailURL,appDetect);
                        }
                     },
                     function() {  // Error callback
                        document.myAppUrls[k] = stopURL;
-                       console.log("Failure Callback " + k);
-
+                       // console.log("Failure Callback " + k);
                        if(appList.length>0){
                           checkAppSupport(appList,availURL,unavailURL,appDetect);
                        }
@@ -172,7 +169,7 @@
                           window.open(WPUrl, '_blank',
                           'location=yes,toolbar=yes,presentationstyle=formsheet,transitionstyle=crossdissolve');
                     } else {
-                        console.log("window.open " + launchStr);
+                        // console.log("window.open " + launchStr);
                         window.open(launchStr,'_system');
                     }
               }
