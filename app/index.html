@@ -123,7 +123,7 @@
                     },
                     function() {  // Error callback
                        document.myAppUrls[k] = stopURL;
-                       console.log("Failure Callback");
+                       console.log("Failure Callback " + k);
 
                        if(appList.length>0){
                           checkAppSupport(appList,availURL,unavailURL,appDetect);
@@ -134,6 +134,7 @@
               
               function onDeviceReady(){
                     document.myAppUrls = {};
+                    console.log("onDeviceReady");
         
                     var appCheck = {};
                     var appPresentUrl = {};
