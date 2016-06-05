@@ -116,7 +116,7 @@
                 appAvailability.check(checkScheme,
                     function() {  // Success callback
                        document.myAppUrls[k] = goURL;
-                       console.log("Success Callback");
+                       console.log("Success Callback " + k);
                        if(appList.length>0){
                          checkAppSupport(appList,availURL,unavailURL,appDetect);
                        }
@@ -168,10 +168,11 @@
                     var launchStr
                     launchStr = document.myAppUrls[scheme];
                     if (!launchStr){
-                          launchStr = WPUrl;
-                    }
-                    window.open(launchStr, '_blank',
+                          window.open(WPUrl, '_blank',
                           'location=yes,toolbar=yes,presentationstyle=formsheet,transitionstyle=crossdissolve');
+                    } else {
+                        window.open(launchStr);
+                    }
               }
                 // open win and turn off location
                 //function goGetWordPressFormInjectCSS(WPUrl) {
