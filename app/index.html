@@ -146,7 +146,7 @@
                         appPresentUrl.twitter = "twitter://user?screen_name=askbysorg";
                         appAbsentUrl.twitter = "http://mobile.twitter.com/askbysorg";
                         appCheck.fb = "fb://";
-                        appPresentUrl.fb = "fb://profile/600914096651234";
+                        appPresentUrl.fb = "fb://page/600914096651234";
                         appAbsentUrl.fb = "https://www.facebook.com/600914096651234";
                     }
                     else if(navigator.userAgent.match(/Android/i))
@@ -154,9 +154,9 @@
                         appCheck.twitter = "com.twitter.android";
                         appPresentUrl.twitter = "twitter://user?screen_name=askbysorg";
                         appAbsentUrl.twitter = "http://mobile.twitter.com/askbysorg";
-                        appCheck.fb = "fb://";
+                        appCheck.fb = "com.facebook.katana";
                         //Still not sure what the corrrect fb link to app is... May need to use intents
-                        appPresentUrl.fb = "fb://profile/600914096651234";
+                        appPresentUrl.fb = "fb://page/600914096651234";
                         appAbsentUrl.fb = "https://www.facebook.com/600914096651234";
                     }  
                    checkAppSupport(["twitter","fb"],appPresentUrl,appAbsentUrl,appCheck);
