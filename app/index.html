@@ -3,7 +3,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-            <meta name="viewport" content="width=device-width, length=device-length, minimum-scale=1, maximum-scale=1" />
+            <meta name="viewport" content="initial-scale=1" />
             <title>Bainbridge Youth Services</title>
             <link rel="stylesheet" href="styles/BYSMobile.min.css" />
             <link rel="stylesheet" href="styles/jquery.mobile.icons.min.css" />
@@ -21,6 +21,7 @@
             
             
             <div data-role="content" data-theme="a">
+                
                 <a href="#myPanel" > <i class="fa fa-bars"></i> </a>
                 
                 <div class="text-center">
@@ -63,16 +64,15 @@
                     <a href="tel:206-707-6388"> <img src="images/MetroUI_Phone.png" height="30" width="30"></a> &nbsp; &nbsp;
                     <img src="images/Google Calendar.png" height="30" width="30" onclick="goGetWordPressForm('https://calendar.google.com/calendar/embed?src=bainbridgeyouthservices.org_m3jggmmcc9r6abmi6smr8ik0bs%40group.calendar.google.com&ctz=America/Los_Angeles&mode=AGENDA','none')">
                         &nbsp; &nbsp;
-                                                
                 </div>
                                 
-                </div>
+            </div>
                     
                     <!--Panel-->
                     <div data-role="panel" id="myPanel">
                         <div align=“center”>
                             <img src="images/askbys.png" width="60%">
-                                </div>
+                        </div>
                         <br>
                         <p>askBYS is a service of Bainbridge Youth Services (BYS), a 50 year old organization whose mission is to promote the social and emotional well being of teens and their families.
                         <p>With the askBYS app you can:
@@ -108,31 +108,38 @@
                         </ul>
                         <img src="images/Team3.jpg" width="80%">
                         <p>Team 4: New UI css, splash screens and screen shots</p>
+                        <ul>
+                            <li>Ryan Cox</li>
+                            <li>Shelby Sundquist</li>
+                            <li>Sam Holzer</li>
+                            <li>John Michael Najarian</li>
+                        </ul>
                         <img src="images/Team4.jpg" width="80%">
                         
                         </div>
                     
-                    </div>
+                    
+                    
+        </div>
         <script>
             //info on fallback - http://stackoverflow.com/questions/23095906/how-to-open-twitter-and-facebook-app-with-phonegap
             
             function checkAppSupport(appList,availURL,unavailURL,appDetect){
-                var k = appList.pop;
+                var k = appList.pop();
                 var goURL = availURL[k];
                 var stopURL = unavailURL[k];
                 var checkScheme = appDetect[k];
                 appAvailability.check(checkScheme,
                                       function() {  // Success callback
                                       document.myAppUrls[k] = goURL;
-                                      console.log("Success Callback");
+                                      // console.log("Success Callback " + k);
                                       if(appList.length>0){
                                       checkAppSupport(appList,availURL,unavailURL,appDetect);
                                       }
                                       },
                                       function() {  // Error callback
                                       document.myAppUrls[k] = stopURL;
-                                      console.log("Failure Callback");
-                                      
+                                      // console.log("Failure Callback " + k);
                                       if(appList.length>0){
                                       checkAppSupport(appList,availURL,unavailURL,appDetect);
                                       }
@@ -142,6 +149,7 @@
         
         function onDeviceReady(){
             document.myAppUrls = {};
+            console.log("onDeviceReady");
             
             var appCheck = {};
             var appPresentUrl = {};
@@ -153,7 +161,7 @@
                 appPresentUrl.twitter = "twitter://user?screen_name=askbysorg";
                 appAbsentUrl.twitter = "http://mobile.twitter.com/askbysorg";
                 appCheck.fb = "fb://";
-                appPresentUrl.fb = "fb://profile/600914096651234";
+                appPresentUrl.fb = "fb://page/600914096651234";
                 appAbsentUrl.fb = "https://www.facebook.com/600914096651234";
             }
             else if(navigator.userAgent.match(/Android/i))
@@ -161,9 +169,9 @@
                 appCheck.twitter = "com.twitter.android";
                 appPresentUrl.twitter = "twitter://user?screen_name=askbysorg";
                 appAbsentUrl.twitter = "http://mobile.twitter.com/askbysorg";
-                appCheck.fb = "fb://";
+                appCheck.fb = "com.facebook.katana";
                 //Still not sure what the corrrect fb link to app is... May need to use intents
-                appPresentUrl.fb = "fb://profile/600914096651234";
+                appPresentUrl.fb = "fb://page/600914096651234";
                 appAbsentUrl.fb = "https://www.facebook.com/600914096651234";
             }
             checkAppSupport(["twitter","fb"],appPresentUrl,appAbsentUrl,appCheck);
@@ -175,10 +183,12 @@
             var launchStr
             launchStr = document.myAppUrls[scheme];
             if (!launchStr){
-                launchStr = WPUrl;
+                window.open(WPUrl, '_blank',
+                            'location=yes,toolbar=yes,presentationstyle=formsheet,transitionstyle=crossdissolve');
+            } else {
+                // console.log("window.open " + launchStr);
+                window.open(launchStr,'_system');
             }
-            window.open(launchStr, '_blank',
-                        'location=yes,toolbar=yes,presentationstyle=formsheet,transitionstyle=crossdissolve');
         }
         // open win and turn off location
         //function goGetWordPressFormInjectCSS(WPUrl) {
