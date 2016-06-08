@@ -3,11 +3,6 @@ $(document).on("pageshow", "#home", function () {
 
 });
 
-$(window).on("resize orientationchange", function () {
-    SetHeightOfDiv();
-});
-
-
 function SetHeightOfDiv() {
     var screen = $.mobile.getScreenHeight();
     var header = $(".ui-header").hasClass("ui-header-fixed") ? $(".ui-header").outerHeight() - 1 : $(".ui-header").outerHeight();
