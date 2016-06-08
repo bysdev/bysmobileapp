@@ -96,7 +96,7 @@
 
                         <p>Connect with our Facebook and Twitter accounts (askBYSorg).
 
-                        <p>Visit us at <a onclick="goGetWordPressForm('http://askbys.com')"> askBYS.org </a> for more resources and information about our organization.
+                        <p>Visit us at <a onclick="goGetWordPressForm('http://askbys.com','none')"> askBYS.org </a> for more resources and information about our organization.
 
                         <p>© 2016 Bainbridge Youth Services. All rights reserved. askBYS app v1.0</p>
                     </div>
@@ -144,7 +144,8 @@
                         appPresentUrl.twitter = "twitter://user?screen_name=askbysorg";
                         appAbsentUrl.twitter = "http://mobile.twitter.com/askbysorg";
                         appCheck.fb = "fb://";
-                        appPresentUrl.fb = "fb://page/600914096651234";
+                        //appPresentUrl.fb = "fb://page/600914096651234"; May not work with ios 9
+                        appPresentUrl.fb = "https://www.facebook.com/600914096651234";
                         appAbsentUrl.fb = "https://www.facebook.com/600914096651234";
                     }
                     else if(navigator.userAgent.match(/Android/i))
