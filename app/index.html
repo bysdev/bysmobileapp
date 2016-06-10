@@ -13,7 +13,7 @@
             <script src="scripts/libs/jquery.mobile-1.4.5.min.js"></script>
             <script src="cordova.js"></script>
             <link rel="stylesheet" href="styles/font-awesome.min.css" />
-                </head>
+</head>
     <body id="index">
         
         
@@ -57,7 +57,7 @@
                 <br>
                 <br>
                                 
-                <!buttons>
+                <!--buttons-->
                 <div align="center">
                     <img src="images/Twitterbird.png" height="30" width="30" onclick="goGetWordPressForm('http://twitter.com/askbysorg','twitter')"> &nbsp; &nbsp;
                     <img src="images/Transparent-Facebook-Logo-Icon.png" height="30" width="30" onclick="goGetWordPressForm('https://www.facebook.com/600914096651234','fb')">  &nbsp; &nbsp;
@@ -98,6 +98,12 @@
                         </ul>
                         <img src="images/Team1.jpg" width="80%">
                         <p>Team 2: Advanced Search</p>
+                        <ul>
+                            <li>Alyssa Gangi</li>
+                            <li>Keaton Blair</li>
+                            <li>Elijah Burns</li>
+                            <li>Jeremy Lipschutz</li>
+                        </ul>
                         <img src="images/Team2.jpg" width="80%">
                         <p>Team 3: Local application integration, new icons, calendar access</p>
                         <ul>
@@ -122,6 +128,7 @@
                     
         </div>
         <script>
+            // open win and turn off location and Kirk update 1
             //info on fallback - http://stackoverflow.com/questions/23095906/how-to-open-twitter-and-facebook-app-with-phonegap
             
             function checkAppSupport(appList,availURL,unavailURL,appDetect){
@@ -161,7 +168,8 @@
                 appPresentUrl.twitter = "twitter://user?screen_name=askbysorg";
                 appAbsentUrl.twitter = "http://mobile.twitter.com/askbysorg";
                 appCheck.fb = "fb://";
-                appPresentUrl.fb = "fb://page/600914096651234";
+                //appPresentUrl.fb = "fb://page/600914096651234"; May not work with ios 9
+                appPresentUrl.fb = "https://www.facebook.com/600914096651234";
                 appAbsentUrl.fb = "https://www.facebook.com/600914096651234";
             }
             else if(navigator.userAgent.match(/Android/i))
@@ -205,6 +213,7 @@
         //}
         //});
             </script>
+
 
 
             </body>
