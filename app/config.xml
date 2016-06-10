@@ -2,7 +2,7 @@
 <widget xmlns = "http://www.w3.org/ns/widgets"
     xmlns:gap = "http://phonegap.com/ns/1.0"
     id = "org.bainbridgeyouthservices.askbys"
-    version = "1.0">
+    version = "1.70">
     
     <name>askBYS</name>
     
@@ -15,7 +15,7 @@
     </author>
     
     <icon src="images/icon.png" />
-    <splash src="images/splash.png" />
+    <splash src="images/Default-568@2x.png" />
     
     <!-- iPhone 6 / 6+ -->
     <icon src="images/icon-60@3x.png" gap:platform="ios" width="180" height="180" />
@@ -54,9 +54,20 @@
     
     <!-- I guess we need this! -->
     <!-- iPhone 5 / iPod Touch (5th Generation) -->
+    
+    <!-- ios splash -->
     <splash src="images/Default-568h@2x.png" platform="ios" width="640" height="1136" />
     
+    <!-- Android splash -->
+    <splash src="images/Default-568h@2x.png" platform="android" qualifier="ldpi" />
+    <splash src="images/Default-568h@2x.png" platform="android" qualifier="mdpi" />
+    <splash src="images/Default-568h@2x.png" platform="android" qualifier="hdpi" />
+    <splash src="images/Default-568h@2x.png" platform="android" qualifier="xhdpi" />
+    <splash src="images/Default-568h@2x.png" platform="android" qualifier="xxhdpi" />
+    <splash src="images/Default-568h@2x.png" platform="android" qualifier="xxxhdpi" />
+
     
+    <!-- Android icon -->
     <icon src="ldpi.png" platform="android" qualifier="ldpi" />
     <icon src="mdpi.png" platform="android" qualifier="mdpi" />
     <icon src="hdpi.png" platform="android" qualifier="hdpi" />
@@ -111,6 +122,10 @@
     <gap:config-file platform="ios" parent="ITSAppUsesNonExemptEncryption" mode="add">
         <false/>
     </gap:config-file>
+    
+    <!-- BHS 2016 team 3 plugin -->
+    <gap:plugin name="com.ohh2ahh.plugins.appavailability" version="0.3.1" />
+
     
     
     <!-- what are these? -->
